@@ -1,0 +1,274 @@
+.resize-active {
+
+	.nav-drop {
+		transition: none !important;
+	}
+}
+
+#header {
+	position: absolute;
+	top: 0;
+	left:0;
+	right: 0;
+	z-index: 3;
+
+}
+
+.header-holder {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	padding: 15px 0;
+	border-bottom: 1px solid rgba(170, 140, 103, 0.7);
+	
+	@include media('>=tablet') {
+		padding: 26px 0;
+	}
+	
+	@include media('>=desktop') {
+		padding: 29px 0 32px;
+	}
+}
+
+.logo {
+	@include animate(margin);
+	max-width: 245px;
+	margin: 0 0 0 40px;
+
+	@include media('>=desktop') {
+		margin: 0;
+	}
+	
+
+	a{
+		color: $white;
+		font-weight: 300;
+		font-size: 25px;
+
+		@include media('>=phone') {
+			font-size: 30px;
+		}
+	}
+}
+#nav {
+	display: flex;
+	align-items: center;
+}
+
+.nav-drop {
+	@include animate(opacity visibility left);
+
+	opacity: 0;
+	visibility: hidden;
+	position: fixed;
+	top: 0;
+	height: 100vh;
+	left: -100px;
+	z-index: 999;
+	background: #3a3a3a;
+
+	@include media('>=desktop') {
+		opacity: 1;
+		visibility: visible;
+		position: static;
+		padding:0 0 0 28px;
+		background: none;
+		height: 100%;
+	}
+
+	.nav-active & {
+		opacity: 1;
+		visibility: visible;
+		left: 0;
+	}
+
+	.menu {
+		@extend %listreset;
+		padding: 20px 0 0;
+		min-width: 320px;
+
+		@include media('>=desktop') {
+			padding: 0 30px 0 0;
+		}
+
+		li {
+			position: relative;
+			padding: 5px 15px;
+
+			@include media('>=desktop') {
+				display: inline-block;
+				vertical-align: top;
+				border: none;
+				padding: 14px 15px;
+				background: none;
+			}
+
+			&.active {
+				background: #f9f9f9;
+			}
+
+			a {
+				position: relative;
+				display: block;
+				font-size: 14px;
+				font-weight: 400;
+				line-height: 1,666666;
+				color: $white;
+				display: block;
+				width: 100%;
+				padding: 5px 5px;
+				background: #3a3a3a;
+
+				&:hover {
+					color: $light-green;
+				}
+
+				@include media('>=desktop') {
+					padding: 0;
+					background: none;
+				}
+			}
+		}
+
+		.sing-up1 {
+			@include animate(color);
+			color: $white;
+			padding: 10px 5px;
+			display: block;
+			
+			@include media('>=phone') {
+				display: none;		
+			}
+
+			&:hover {
+				color: $light-green;
+			}
+		}
+	}
+
+	.bottom-menu {
+		@extend %listreset;
+		padding: 15px 0 0 0;
+
+		@include media('>=phone') {
+			display: none;
+		}
+
+		li {
+			padding:5px 15px;
+		}
+
+		a {
+			color:#c4c4c4;
+			padding: 5px;
+			font-size: 14px;
+
+			&:hover {
+				color: $light-green;
+			}
+		}
+	}
+}
+
+.sing-up {
+		@include animate(background);
+		background: $light-green;
+		padding: 17px 30px;
+		font-size: 9px;
+		display: none;
+
+		@include media('>=phone') {
+			display: inline-block;
+			border-radius: 5px;
+		}
+
+		&:hover {
+			background: #539b29;
+		}
+
+		a {
+			color: $white;
+			font-size: 14px
+		}
+	}
+
+.nav-opener,
+.nav-opener-2
+{
+	@include animate(margin);
+	position: absolute;
+	width: 40px;
+	height: 30px;
+	left: 17px;
+	top: 15px;
+
+	@include media('>=phone') {
+		top: 25px;
+	}
+
+	@include media('>=tablet') {
+		top: 34px;
+	}
+
+	@include media('>=desktop') {
+		display: none;
+	}
+
+	&:before,
+	&:after,
+	span {
+		background: $white;
+		border-radius: 4px;
+		position: absolute;
+		top: 16px;
+		left:25%;
+		right:25%;
+		height:2px;
+		margin: -2px 0 0;
+		transition: all .2s linear;
+	}
+
+	&:before,
+	&:after {
+		content: '';
+		top: 10px;
+	}
+
+	&:after {
+		top: 22px;
+	}
+
+	.nav-active & {
+
+		span {
+			opacity: 0;
+		}
+
+		&:before,
+		&:after {
+			transform: rotate(45deg);
+			top: 50%;
+			left: 15%;
+			right: 15%;
+		}
+
+		&:after {
+			transform: rotate(-45deg);
+		}
+	}
+}
+
+.nav-opener-2 {
+position: absolute;
+left: 270px;
+top: 35px;
+z-index:2;
+
+&:before,
+	&:after,
+	span {
+		background: $brown;
+	}
+
+}
